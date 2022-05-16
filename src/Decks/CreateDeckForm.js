@@ -15,16 +15,21 @@ export const CreateDeckForm = () => {
     setDeckForm({ ...deckForm, [evt.target.name]: evt.target.value });
   };
 
-  const handleSubmit = async (evt) => {
+  const handleButton = async (evt) => {
     evt.preventDefault();
-    await createDeck(deckForm);
-    setDeckForm({ ...initialDeckForm });
-    history.push("/");
+    if (deckForm.name !== "") {
+      await createDeck(deckForm);
+      setDeckForm({ ...initialDeckForm });
+      history.push("/deck");
+    } else {
+      setDeckForm({ ...initialDeckForm });
+      history.push("/");
+    }
   };
 
   return (
     <React.Fragment>
-      <form name="createNewDeck" onSubmit={handleSubmit}>
+      <form name="createNewDeck" onSubmit={handleButton}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -52,7 +57,12 @@ export const CreateDeckForm = () => {
             rows="4"
           />
         </div>
-        <button type="button" className="btn btn-secondary" name="cancel">
+        <button
+          type="button"
+          className="btn btn-secondary"
+          name="cancel"
+          onClick={handleButton}
+        >
           Cancel
         </button>
         <button type="submit" className="btn btn-primary">

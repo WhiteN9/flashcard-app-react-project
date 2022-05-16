@@ -7,6 +7,7 @@ export default function CreateDeck() {
     return (
     <>
       <DeckNav />
+      <h1>Create Deck</h1>
       <CreateDeckForm />
     </>
   );

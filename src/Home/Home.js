@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import { listDecks } from "../utils/api";
 
@@ -33,6 +34,7 @@ export default function Home() {
   return (
     <div>
       <div>
+        <Link to="/decks/new"><button> Create Deck</button></Link>
       </div>
       <div>
         <ul>

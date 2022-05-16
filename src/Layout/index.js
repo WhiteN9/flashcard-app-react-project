@@ -17,6 +17,8 @@ function Layout() {
             <Home />
           </Route>
           <Route>
+          </Route>
+          <Route>
             <NotFound />
           </Route>
         </Switch>
@@ -26,3 +28,5 @@ function Layout() {
 }
 
 export default Layout;
+
+//Route to the card?

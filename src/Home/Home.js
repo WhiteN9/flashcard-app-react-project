@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 
 import { listDecks } from "../utils/api";
 
 import { DeckItem } from "../Decks/DeckItem.js";
+import NewDeck from "../Decks/NewDeck";
+
 
 export default function Home() {
   const [deckList, setDeckList] = useState([]);
+  const userouteMatch = useRouteMatch(); 
+//   console.log(userouteMatch);
 
   useEffect(() => {
     setDeckList([]);
@@ -34,9 +38,16 @@ export default function Home() {
   return (
     <div>
       <div>
-        <Link to="/decks/new"><button> Create Deck</button></Link>
+        <Link to="/decks/new">
+          <button> Create Deck</button>
+        </Link>
       </div>
       <div>
+        <Switch>
+          <Route path="/decks/new">
+              <NewDeck />
+          </Route>
+        </Switch>
         <ul>
           {deckList.map((deck) => (
             <DeckItem key={deck.id} deck={deck} />
@@ -46,3 +57,5 @@ export default function Home() {
     </div>
   );
 }
+
+//might need to put deckList into a component?

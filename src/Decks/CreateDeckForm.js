@@ -1,36 +1,63 @@
 import React, { useState } from "react";
+import { createDeck } from "../utils/api";
+import { useHistory } from "react-router-dom";
 
 export const CreateDeckForm = () => {
-  const [newDeck, setNewDeck] = useState({});
+  const history = useHistory();
+  const initialDeckForm = {
+    name: "",
+    description: "",
+  };
+  const [deckForm, setDeckForm] = useState({ ...initialDeckForm });
+
+  const handleChange = (evt) => {
+    console.log(evt.target.value);
+    setDeckForm({ ...deckForm, [evt.target.name]: evt.target.value });
+  };
+
+  const handleSubmit = async (evt) => {
+    evt.preventDefault();
+    await createDeck(deckForm);
+    setDeckForm({ ...initialDeckForm });
+    history.push("/");
+  };
 
   return (
     <React.Fragment>
-      <form name="createNewDeck" onSubmit="">
+      <form name="createNewDeck" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
             id="name"
-            value=""
-            onChange=""
+            name="name"
+            value={deckForm.name}
+            onChange={handleChange}
             placeholder="Deck Name"
             required
             className="form-control"
             autoFocus
             type="text"
-          ></input>
+          />
         </div>
         <div className="form-group">
           <label htmlFor="description">Description</label>
           <textarea
             id="description"
-            value=""
-            onChange=""
+            name="description"
+            value={deckForm.description}
+            onChange={handleChange}
             placeholder="Brief description of the deck"
             required
             className="form-control"
             rows="4"
-          ></textarea>
+          />
         </div>
+        <button type="button" className="btn btn-secondary" name="cancel">
+          Cancel
+        </button>
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
     </React.Fragment>
   );

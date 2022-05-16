@@ -5,7 +5,7 @@ import Header from "./Header";
 import Home from "../Home/Home.js";
 
 import NotFound from "./NotFound";
-import NewDeck from "../Decks/NewDeck";
+import CreateDeck from "../Decks/CreateDeck";
 
 function Layout() {
   return (
@@ -18,7 +18,7 @@ function Layout() {
             <Home />
           </Route>
           <Route path="/decks/new">
-            <NewDeck />
+            <CreateDeck />
           </Route>
           <Route>
             <NotFound />

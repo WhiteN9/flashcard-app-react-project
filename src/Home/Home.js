@@ -3,14 +3,13 @@ import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 
 import { listDecks } from "../utils/api";
 
-import { DeckItem } from "../Decks/DeckItem.js";
-import NewDeck from "../Decks/NewDeck";
+import { DeckItemLink } from "../Decks/DeckItemLink.js";
 
 
 export default function Home() {
   const [deckList, setDeckList] = useState([]);
-  const userouteMatch = useRouteMatch(); 
-//   console.log(userouteMatch);
+  const userouteMatch = useRouteMatch();
+  //   console.log(userouteMatch);
 
   useEffect(() => {
     setDeckList([]);
@@ -34,25 +33,22 @@ export default function Home() {
     };
   }, []);
 
+  const deckItemLinks = deckList.map((deck) => (
+    <DeckItemLink key={deck.id} deck={deck} />
+  ));
+
   //   console.log(deckList);
   return (
     <div>
       <div>
-        <Link to="/decks/new">
-          <button> Create Deck</button>
-        </Link>
+        <Link to="/decks/new"> Create Deck </Link>
       </div>
+      <div>{deckItemLinks}</div>
       <div>
         <Switch>
-          <Route path="/decks/new">
-              <NewDeck />
-          </Route>
+
         </Switch>
-        <ul>
-          {deckList.map((deck) => (
-            <DeckItem key={deck.id} deck={deck} />
-          ))}
-        </ul>
+        <ul></ul>
       </div>
     </div>
   );

@@ -1,3 +1,11 @@
+import React from "react";
+import { DeckNav } from "./DeckNav";
+
 export default function NewDeck() {
-    return "a";
+  console.log("a");
+    return (
+    <>
+      <DeckNav />
+    </>
+  );
 }

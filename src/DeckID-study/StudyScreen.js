@@ -44,8 +44,10 @@ export default function StudyScreen() {
     if (cardIndex + 1 !== deckInfo.cards.length) {
       setCardIndex(cardIndex + 1);
       setFlipped(!flipped);
-    } else { 
-      const staying = window.confirm("Restart cards? \n \n Click 'cancel' to return to the home page?")
+    } else {
+      const staying = window.confirm(
+        "Restart cards? \n \n Click 'cancel' to return to the home page?"
+      );
       if (staying) {
         setCardIndex(0);
       } else history.push("/");
@@ -56,34 +58,91 @@ export default function StudyScreen() {
       <StudyScreenNav deckInfo={deckInfo} />
       <h1>Study: {deckInfo.name}</h1>
       <div className="card">
-        <div className="card-body">
-          <h5 className="card-title">
-            Card {card.id} of {deckInfo.cards.length}
-          </h5>
-          <p className="card-text">{flipped ? card.front : card.back}</p>
-          <div
-            className="btn-toolbar"
-            role="toolbar"
-            aria-label="Toolbar with button groups"
-          >
-            <div className="btn-group" role="group" aria-label="First group">
-              <button
-                className="btn btn-secondary mr-2"
-                onClick={() => setFlipped(!flipped)}
-              >
-                Flip
-              </button>
-            </div>
-            {flipped && (
+        {/*conditional rendering for deck length*/}
+        {deckInfo.cards.length > 2 ? (
+          <div className="card-body">
+            <h5 className="card-title">
+              Card {card.id} of {deckInfo.cards.length}
+            </h5>
+            <p className="card-text">{flipped ? card.front : card.back}</p>
+            <div
+              className="btn-toolbar"
+              role="toolbar"
+              aria-label="Toolbar with button groups"
+            >
               <div className="btn-group" role="group" aria-label="First group">
-                <button className="btn btn-primary" onClick={cardHandler}>
-                  Next
+                <button
+                  className="btn btn-secondary mr-2"
+                  onClick={() => setFlipped(!flipped)}
+                >
+                  Flip
                 </button>
               </div>
-            )}
+              {/*conditional rendering for flipped card*/}
+              {flipped && (
+                <div className="btn-group" role="group" aria-label="First group">
+                  <button className="btn btn-primary" onClick={cardHandler}>
+                    Next
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="card-body">
+            <h3 className="card-title">
+              Not enough cards.
+            </h3>
+            <p className="card-text">You need at least 3 cards to study. There are {deckInfo.cards.length} cards in this deck.</p>
+          </div>
+        )}
       </div>
     </React.Fragment>
   );
+  
 }
+
+// return (
+//   <React.Fragment>
+//     <StudyScreenNav deckInfo={deckInfo} />
+//     <h1>Study: {deckInfo.name}</h1>
+//     <div className="card">
+//       {deckInfo.cards.length > 2 ? (
+//         <div className="card-body">
+//           <h5 className="card-title">
+//             Card {card.id} of {deckInfo.cards.length}
+//           </h5>
+//           <p className="card-text">{flipped ? card.front : card.back}</p>
+//           <div
+//             className="btn-toolbar"
+//             role="toolbar"
+//             aria-label="Toolbar with button groups"
+//           >
+//             <div className="btn-group" role="group" aria-label="First group">
+//               <button
+//                 className="btn btn-secondary mr-2"
+//                 onClick={() => setFlipped(!flipped)}
+//               >
+//                 Flip
+//               </button>
+//             </div>
+//             {flipped && (
+//               <div className="btn-group" role="group" aria-label="First group">
+//                 <button className="btn btn-primary" onClick={cardHandler}>
+//                   Next
+//                 </button>
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//       ) : (
+//         <div className="card-body">
+//           <h3 className="card-title">
+//             Not enough cards.
+//           </h3>
+//           <p className="card-text">You need at least 3 cards to study. There are {deckInfo.cards.length} cards in this deck.</p>
+//         </div>
+//       )}
+//     </div>
+//   </React.Fragment>
+// );

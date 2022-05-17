@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
+import { Link, Route, Switch, useHistory } from "react-router-dom";
 
-import { listDecks } from "../utils/api";
+import { listDecks, deleteDeck } from "../utils/api";
 
 import { DeckItemLink } from "../Decks/DeckItemLink.js";
 
 export default function Home() {
   const [deckList, setDeckList] = useState([]);
-  const userouteMatch = useRouteMatch();
+  // const userouteMatch = useRouteMatch();
   //   console.log(userouteMatch);
+
+  const history = useHistory();
 
   useEffect(() => {
     setDeckList([]);
@@ -32,8 +34,18 @@ export default function Home() {
     };
   }, []);
 
+  const handleDelete = async (deck) => {
+    console.log(deck);
+    const result = window.confirm("Delete this deck?");
+    if (result) {
+      console.log("deleted post");
+      await deleteDeck(deck.id);
+      history.go(0);
+    }
+  };
+
   const deckItemLinks = deckList.map((deck) => (
-    <DeckItemLink key={deck.id} deck={deck} />
+    <DeckItemLink key={deck.id} deck={deck} handleDelete={()=>handleDelete(deck)} />
   ));
 
   //   console.log(deckList);
@@ -47,7 +59,7 @@ export default function Home() {
             width="32"
             height="32"
             fill="white"
-            class="bi bi-plus"
+            className="bi bi-plus"
             viewBox="0 0 16 16"
           >
             <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />

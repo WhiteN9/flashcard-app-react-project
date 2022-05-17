@@ -18,6 +18,9 @@ function Layout() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route path="/deck">
+            <Deck />
+          </Route>
           <Route path="/decks/new">
             <CreateDeck />
           </Route>

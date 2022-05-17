@@ -1,10 +1,10 @@
 import React from "react";
-import { DeckNav } from "./DeckNav";
+import { CreateDeckNav } from "./CreateDeckNav";
 import { CreateDeckForm } from "./CreateDeckForm";
 
 export const CreateDeck = () => (
   <>
-    <DeckNav />
+    <CreateDeckNav />
     <h1>Create Deck</h1>
     <CreateDeckForm />
   </>

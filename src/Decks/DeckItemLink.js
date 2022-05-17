@@ -29,7 +29,9 @@ export const DeckItemLink = ({ deck = { cards: [] }, handleDelete }) => {
           aria-label="Toolbar with button groups"
         >
           <div className="btn-group" role="group" aria-label="First group">
-            <button className="btn btn-secondary mr-2">View</button>
+            <Link to={`/deck`} className="btn btn-secondary mr-2">
+              View
+            </Link>
           </div>
           <div className="btn-group" role="group" aria-label="First group">
             <Link to={`/decks/${deck.id}/study`} className="btn btn-primary">

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const DeckNav = () => (
+export const CreateDeckNav = () => (
   <nav aria-label="breadcrumb">
     <ol className="breadcrumb">
       <li className="breadcrumb-item">

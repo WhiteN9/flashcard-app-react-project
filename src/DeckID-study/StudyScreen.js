@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import { StudyScreenNav } from "./StudyScreenNav";
 import { CardItemLink } from "./CardItemLink";
@@ -8,9 +8,9 @@ import { CardItemLink } from "./CardItemLink";
 export default function StudyScreen() {
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
   const [cardIndex, setCardIndex] = useState(0);
-
   const [flipped, setFlipped] = useState(false); //flipped - flip
 
+  const history = useHistory();
   const deckId = useParams().userId;
   // console.log(deckId); >> 1
   useEffect(() => {
@@ -43,7 +43,12 @@ export default function StudyScreen() {
   const cardHandler = () => {
     if (cardIndex + 1 !== deckInfo.cards.length) {
       setCardIndex(cardIndex + 1);
-    } else {
+      setFlipped(!flipped);
+    } else { 
+      const staying = window.confirm("Restart cards? \n \n Click 'cancel' to return to the home page?")
+      if (staying) {
+        setCardIndex(0);
+      } else history.push("/");
     }
   };
   return (

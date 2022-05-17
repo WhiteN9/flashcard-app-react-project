@@ -13,7 +13,6 @@ export default function StudyScreen() {
 
   const deckId = useParams().userId;
   // console.log(deckId); >> 1
-
   useEffect(() => {
     const controller = new AbortController();
     async function readDeckInfo() {
@@ -25,37 +24,58 @@ export default function StudyScreen() {
       }
     }
     readDeckInfo();
-
     return () => controller.abort();
   }, [deckId]);
 
   const card = deckInfo.cards[cardIndex] || {};
 
-  console.log(card);
+  // console.log(card);
+  //Flip:
+  //Flipped = false
+  //Click
+  //Flipped = true
+  //in card-text class: {card?.front} also works for 1 condition, known as Optional chaining
 
+  // const handleFlip = () => {
+  //   setFlipped(!flipped);
+  // };
+
+  const cardHandler = () => {
+    if (cardIndex + 1 !== deckInfo.cards.length) {
+      setCardIndex(cardIndex + 1);
+    } else {
+    }
+  };
   return (
     <React.Fragment>
       <StudyScreenNav deckInfo={deckInfo} />
-      <h1>{deckInfo.name}: Study</h1>
+      <h1>Study: {deckInfo.name}</h1>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">
             Card {card.id} of {deckInfo.cards.length}
           </h5>
-          <p className="card-text">{card.front}</p>
+          <p className="card-text">{flipped ? card.front : card.back}</p>
           <div
             className="btn-toolbar"
             role="toolbar"
             aria-label="Toolbar with button groups"
           >
             <div className="btn-group" role="group" aria-label="First group">
-              <button className="btn btn-secondary mr-2">Flip</button>
+              <button
+                className="btn btn-secondary mr-2"
+                onClick={() => setFlipped(!flipped)}
+              >
+                Flip
+              </button>
             </div>
-            <div className="btn-group" role="group" aria-label="First group">
-              <Link to="" className="btn btn-primary">
-                Next
-              </Link>
-            </div>
+            {flipped && (
+              <div className="btn-group" role="group" aria-label="First group">
+                <button className="btn btn-primary" onClick={cardHandler}>
+                  Next
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

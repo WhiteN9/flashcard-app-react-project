@@ -45,10 +45,15 @@ export default function Home() {
   };
 
   const deckItemLinks = deckList.map((deck) => (
-    <DeckItemLink key={deck.id} deck={deck} handleDelete={()=>handleDelete(deck)} />
+    <DeckItemLink
+      key={deck.id}
+      deck={deck}
+      handleDelete={() => handleDelete(deck)}
+    />
   ));
 
-  //   console.log(deckList);
+  // console.log(Array.isArray(deckList));
+  // console.log(deckList);
   return (
     <div>
       <div className="mb-2">

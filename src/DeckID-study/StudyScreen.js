@@ -4,8 +4,13 @@ import { readDeck } from "../utils/api";
 import { StudyScreenNav } from "./StudyScreenNav";
 import { CardItemLink } from "./CardItemLink";
 
+//setting default values are very important to not break the page at initial load
 export default function StudyScreen() {
-  const [deckInfo, setDeckInfo] = useState([]);
+  const [deckInfo, setDeckInfo] = useState({ cards: [] });
+  const [cardIndex, setCardIndex] = useState(0);
+
+  const [flipped, setFlipped] = useState(false); //flipped - flip
+
   const deckId = useParams().userId;
   // console.log(deckId); >> 1
 
@@ -24,26 +29,20 @@ export default function StudyScreen() {
     return () => controller.abort();
   }, [deckId]);
 
-  console.log(deckInfo);
+  const card = deckInfo.cards[cardIndex] || {};
 
-  const cardMap = deckInfo.cards.map((card) => {
-    return (
-        <div>{card.id}</div>
-    );
-  });
+  console.log(card);
 
-
-  console.log(cardMap);
   return (
     <React.Fragment>
       <StudyScreenNav deckInfo={deckInfo} />
+      <h1>{deckInfo.name}: Study</h1>
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title"></h5>
-          <p className="card-text">
-            With supporting text below as a natural lead-in to additional
-            content.
-          </p>
+          <h5 className="card-title">
+            Card {card.id} of {deckInfo.cards.length}
+          </h5>
+          <p className="card-text">{card.front}</p>
           <div
             className="btn-toolbar"
             role="toolbar"

@@ -56,10 +56,6 @@ export default function Home() {
         </Link>
       </div>
       <div className="list-group">{deckItemLinks}</div>
-      <div>
-        <Switch></Switch>
-        <ul></ul>
-      </div>
     </div>
   );
 }

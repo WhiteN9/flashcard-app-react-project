@@ -1,7 +1,8 @@
 import { deleteDeck } from "../utils/api";
 import { useRouteMatch, Link } from "react-router-dom";
 
-export const DeckItemLink = ({ deck }) => {
+//not sure what is the default for
+export const DeckItemLink = ({ deck = { cards: [] } }) => {
   // console.log(id)
   const userouteMatch = useRouteMatch();
   console.log(userouteMatch);
@@ -15,7 +16,7 @@ export const DeckItemLink = ({ deck }) => {
     }
   };
   return (
-    <div className="card list-group-item list-group-item-action">
+    <article className="card list-group-item list-group-item-action">
       <div className="card-body">
         <div className="d-flex justify-content-between">
           <h5 className="card-title">{deck.name}</h5>
@@ -44,7 +45,7 @@ export const DeckItemLink = ({ deck }) => {
             </button>
           </div>
           <div className="btn-group" role="group" aria-label="First group">
-            <button className="btn btn-primary">
+            <Link to={`/decks/${deck.id}/study`} className="btn btn-primary">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -61,7 +62,7 @@ export const DeckItemLink = ({ deck }) => {
                 <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
               </svg>
               Study
-            </button>
+            </Link>
           </div>
           <div
             className="btn-group ml-auto"
@@ -87,6 +88,6 @@ export const DeckItemLink = ({ deck }) => {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };

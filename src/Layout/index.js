@@ -3,9 +3,10 @@ import { Route, Switch } from "react-router-dom";
 
 import Header from "./Header";
 import Home from "../Home/Home.js";
-
-import NotFound from "./NotFound";
 import CreateDeck from "../Decks/CreateDeck";
+import StudyScreen from "../DeckID-study/StudyScreen";
+import NotFound from "./NotFound";
+
 
 function Layout() {
   return (
@@ -19,6 +20,9 @@ function Layout() {
           </Route>
           <Route path="/decks/new">
             <CreateDeck />
+          </Route>
+          <Route path="/decks/:userId/study">
+            <StudyScreen />
           </Route>
           <Route>
             <NotFound />

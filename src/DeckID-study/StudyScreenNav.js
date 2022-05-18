@@ -7,7 +7,7 @@ export const StudyScreenNav = ({deckInfo}) => (
         <Link to="/">Home</Link>
       </li>
       <li className="breadcrumb-item">
-        <Link to="">{deckInfo.name}</Link>
+        <Link to={`/decks/${deckInfo.id}`}>{deckInfo.name}</Link>
       </li>
       <li className="breadcrumb-item active">Study</li>
     </ol>

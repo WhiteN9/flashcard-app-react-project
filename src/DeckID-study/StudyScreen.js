@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import { StudyScreenNav } from "./StudyScreenNav";
-import { CardItemLink } from "./CardItemLink";
+import { CardItemLink } from "./CardItemLink-torefactor";
 
 //setting default values are very important to not break the page at initial load
 export default function StudyScreen() {
@@ -11,7 +11,7 @@ export default function StudyScreen() {
   const [flipped, setFlipped] = useState(false); //flipped - flip
 
   const history = useHistory();
-  const deckId = useParams().userId;
+  const deckId = useParams().deckId;
   // console.log(deckId); >> 1
   useEffect(() => {
     const controller = new AbortController();

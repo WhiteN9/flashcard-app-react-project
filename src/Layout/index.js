@@ -9,6 +9,9 @@ import StudyScreen from "../DeckID-study/StudyScreen";
 import NotFound from "./NotFound";
 
 function Layout() {
+  //handleDelete 
+  //if the item has cardId, delete from card
+  //if no cardId, delete from deck
   return (
     <>
       <Header />

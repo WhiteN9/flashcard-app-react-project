@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useRouteMatch, Link } from "react-router-dom";
-import { readDeck, deleteDeck } from "../utils/api";
+import { useRouteMatch, Link, useHistory } from "react-router-dom";
+import { readDeck, deleteDeck, deleteCard } from "../utils/api";
 import { DeckNav } from "./DeckNav";
 import { CardItemLink } from "./CardItemLink";
 
@@ -9,6 +9,7 @@ export default function Deck() {
   // still need cards:[] because on initial load,
   // it will try to access cards to map
 
+  const history = useHistory();
   const routeMatch = useRouteMatch();
   //   console.log(routeMatch);
   //   params: {
@@ -41,10 +42,12 @@ export default function Deck() {
 
   const handleDelete = async (cardInfo) => {
     console.log(cardInfo);
-    const result = window.confirm("Delete this card?");
+    const result = window.confirm("Delete this card? \n \n You will not be able to recover it"); 
+    // need to fix this for deck and card in this component
     if (result) {
       console.log("deleted card");
-      await deleteDeck(cardInfo.id);
+      await deleteCard(cardInfo.id);
+      history.go(0);
     }
   };
 
@@ -100,7 +103,7 @@ export default function Deck() {
             role="group"
             aria-label="First group"
           >
-            <button className="btn btn-danger" onClick={handleDelete}></button>
+            <button className="btn btn-danger" ></button>
           </div>
         </div>
       </article>

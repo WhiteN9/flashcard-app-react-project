@@ -3,7 +3,6 @@ import {
   Route,
   Switch,
   useRouteMatch,
-  Link,
   useHistory,
 } from "react-router-dom";
 import { readDeck, deleteDeck, deleteCard } from "../utils/api";

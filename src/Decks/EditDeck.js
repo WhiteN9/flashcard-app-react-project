@@ -6,7 +6,7 @@ const EditDeck = ({ deckInfo }) => (
   <>
     <EditDeckNav deckInfo={deckInfo} />
     <h1>Edit Deck</h1>
-    <EditDeckForm />
+    <EditDeckForm deckInfo={deckInfo} />
   </>
 );
 

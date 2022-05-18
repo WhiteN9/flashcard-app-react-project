@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import { StudyScreenNav } from "./StudyScreenNav";
 

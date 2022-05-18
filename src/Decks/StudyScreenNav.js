@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const StudyScreenNav = ({deckInfo}) => (
+export const StudyScreenNav = ({ deckInfo }) => (
   <nav aria-label="breadcrumb">
     <ol className="breadcrumb">
       <li className="breadcrumb-item">

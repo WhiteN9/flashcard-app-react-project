@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-
 import { listDecks, deleteDeck } from "../utils/api";
-
 import { HomeDecks } from "./HomeDecks.js";
 
 export default function Home() {

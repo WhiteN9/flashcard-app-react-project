@@ -1,74 +1,41 @@
 import React, { useState } from "react";
-import { createDeck } from "../utils/api";
 import { useHistory } from "react-router-dom";
+import { createDeck } from "../utils/api";
+import { DeckForm } from "../Form/DeckForm";
 
 export const CreateDeckForm = () => {
   const history = useHistory();
-  const initialDeckForm = {
+  const initialDeckInfo = {
     name: "",
     description: "",
   };
-  const [deckForm, setDeckForm] = useState({ ...initialDeckForm });
+  const [deckInfo, setDeckInfo] = useState({ ...initialDeckInfo });
 
-  const handleChange = (evt) => {
-    console.log(evt.target.value);
-    setDeckForm({ ...deckForm, [evt.target.name]: evt.target.value });
+  const controller = new AbortController();
+
+  const handleCreateDeck = async (evt) => {
+    evt.preventDefault();
+    const data = await createDeck(deckInfo, controller.signal);
+    console.log(data);
+    setDeckInfo({ ...initialDeckInfo });
+    history.push("/decks/");
   };
 
-  const handleButton = async (evt) => {
-    evt.preventDefault();
-    if (deckForm.name !== "") {
-      await createDeck(deckForm);
-      setDeckForm({ ...initialDeckForm });
-      history.push("/deck");
-    } else {
-      setDeckForm({ ...initialDeckForm });
-      history.push("/");
-    }
+  const onCancel = () => {
+    setDeckInfo({ ...initialDeckInfo });
+    history.push("/");
   };
 
   return (
     <React.Fragment>
-      <form name="createNewDeck" onSubmit={handleButton}>
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            id="name"
-            name="name"
-            value={deckForm.name}
-            onChange={handleChange}
-            placeholder="Deck Name"
-            required
-            className="form-control"
-            autoFocus
-            type="text"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="description">Description</label>
-          <textarea
-            id="description"
-            name="description"
-            value={deckForm.description}
-            onChange={handleChange}
-            placeholder="Brief description of the deck"
-            required
-            className="form-control"
-            rows="4"
-          />
-        </div>
-        <button
-          type="button"
-          className="btn btn-secondary"
-          name="cancel"
-          onClick={handleButton}
-        >
-          Cancel
-        </button>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      <DeckForm
+        onSubmit={handleCreateDeck}
+        onCancel={onCancel}
+        deckInfo
+        setDeckInfo={setDeckInfo}
+        submitLabel="Submit"
+        cancelLabel="Cancel"
+      />
     </React.Fragment>
   );
 };

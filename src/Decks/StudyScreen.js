@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import { StudyScreenNav } from "./StudyScreenNav";
 
 //setting default values are very important to not break the page at initial load
 export default function StudyScreen() {
-  const [deckInfo, setDeckInfo] = useState({ cards: [] }); 
+  const [deckInfo, setDeckInfo] = useState({ cards: [] });
   //default value with an object of `cards` property with an empty array value
   //so that the `card` variable have something "defined" to read while waiting for the
   //actual deckInfo.cards
@@ -106,7 +106,12 @@ export default function StudyScreen() {
             You need at least 3 cards to study. There are{" "}
             {deckInfo.cards.length} cards in this deck.
           </p>
-          <button className="btn btn-primary">Add Cards</button>
+          <Link
+            to={`/decks/${deckInfo.id}/cards/new`}
+            className="btn btn-primary"
+          >
+            Add Cards
+          </Link>
         </div>
       )}
     </React.Fragment>

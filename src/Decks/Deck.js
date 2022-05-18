@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Route,
-  Switch,
-  useRouteMatch,
-  useHistory,
-} from "react-router-dom";
+import { Route, Switch, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, deleteCard } from "../utils/api";
 
 import { CardItemLink } from "./CardItemLink";
@@ -20,7 +15,10 @@ export default function Deck() {
   // it will try to access cards to map
 
   const history = useHistory();
-  const { params:{deckId}, path } = useRouteMatch();
+  const {
+    params: { deckId },
+    path,
+  } = useRouteMatch();
   //   console.log(routeMatch);
   //   params: {
   //     deckId: "1";
@@ -77,8 +75,6 @@ export default function Deck() {
       handleDelete={() => handleDelete(cardInfo)}
     />
   ));
-
-  //   console.log(deckInfo.cards);
 
   return (
     <React.Fragment>

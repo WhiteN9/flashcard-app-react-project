@@ -7,8 +7,6 @@ export const CardForm = ({
   cancelLabel,
 }) => {
   const handleInputChange = (evt) => {
-    console.log(cardInfo);
-    console.log(evt.target.value);
     setCardInfo({ ...cardInfo, [evt.target.name]: evt.target.value });
   };
 

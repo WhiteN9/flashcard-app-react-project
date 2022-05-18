@@ -21,17 +21,16 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
 
   const handleCreateCard = async (evt) => {
     evt.preventDefault();
-    const data = await createCard(cardInfo, controller.signal);
+    const data = await createCard(cardInfo.deckId,cardInfo, controller.signal);
     console.log(data);
     setCardInfo({ ...initialCardInfo });
-    history.go(-1);
   };
 
   const onCancel = () => {
     setCardInfo({ ...initialCardInfo });
     history.go(-1);
   };
-  
+
   return (
     <React.Fragment>
       <CardForm

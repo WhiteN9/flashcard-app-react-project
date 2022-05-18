@@ -19,7 +19,7 @@ export const EditDeckForm = () => {
     const controller = new AbortController();
     async function readDeckInfo() {
       try {
-        const data = await readDeck(deckId, controller.sginal);
+        const data = await readDeck(deckId, controller.signal);
         setDeckInfo(data);
       } catch (error) {
         console.log(error);

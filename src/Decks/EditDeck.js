@@ -1,6 +1,6 @@
 import React from "react";
-import { EditDeckNav } from "./EditDeckNav";
 import { EditDeckForm } from "./EditDeckForm";
+import { EditDeckNav } from "./EditDeckNav";
 
 const EditDeck = ({ deckInfo }) => (
   <>

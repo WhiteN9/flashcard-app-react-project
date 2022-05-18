@@ -1,40 +1,39 @@
-export const DeckForm = ({
+export const CardForm = ({
   onSubmit,
   onCancel,
-  deckInfo,
-  setDeckInfo,
+  cardInfo,
+  setCardInfo,
   submitLabel,
   cancelLabel,
 }) => {
   const handleInputChange = (evt) => {
     console.log(evt.target.value);
-    setDeckInfo({ ...deckInfo, [evt.target.name]: evt.target.value });
+    setCardInfo({ ...cardInfo, [evt.target.name]: evt.target.value });
   };
 
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          name="name"
-          value={deckInfo.name}
+        <label htmlFor="card-front">Front:</label>
+        <textarea
+          id="card-front"
+          name="card-front"
+          value={cardInfo.front}
           onChange={handleInputChange}
-          placeholder="Deck Name"
+          placeholder="Brief description of the front"
           required
           className="form-control"
-          autoFocus
-          type="text"
+          rows="4"
         />
       </div>
       <div className="form-group">
-        <label htmlFor="description">Description</label>
+        <label htmlFor="card-back">Back:</label>
         <textarea
-          id="description"
-          name="description"
-          value={deckInfo.description}
+          id="card-back"
+          name="card-back"
+          value={cardInfo.back}
           onChange={handleInputChange}
-          placeholder="Brief description of the deck"
+          placeholder="Brief description of the back"
           required
           className="form-control"
           rows="4"

@@ -31,7 +31,7 @@ export default function StudyScreen() {
       controller.abort();
     };
   }, [deckId]);
-  console.log(deckInfo);
+  // console.log(deckInfo);
   const card = deckInfo.cards[cardIndex] || {};
 
   // console.log(card);
@@ -45,10 +45,12 @@ export default function StudyScreen() {
   //   setFlipped(!flipped);
   // };
 
+
   const cardHandler = () => {
-    if (cardIndex + 1 !== deckInfo.cards.length) {
+    if (cardIndex+1 < deckInfo.cards.length) {
       setCardIndex(cardIndex + 1);
       setFlipped(!flipped);
+
     } else {
       const staying = window.confirm(
         "Restart cards? \n \n Click 'cancel' to return to the home page?"
@@ -58,6 +60,7 @@ export default function StudyScreen() {
       } else history.push("/");
     }
   };
+  
   return (
     <React.Fragment>
       <StudyScreenNav deckInfo={deckInfo} />
@@ -68,9 +71,9 @@ export default function StudyScreen() {
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">
-              Card {card.id} of {deckInfo.cards.length}
+              Card {cardIndex+1} of {deckInfo.cards.length}
             </h5>
-            <p className="card-text">{flipped ? card.front : card.back}</p>
+            <p className="card-text">{flipped ? card.back : card.front}</p>
             <div
               className="btn-toolbar"
               role="toolbar"

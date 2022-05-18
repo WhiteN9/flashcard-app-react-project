@@ -5,6 +5,7 @@ import Header from "./Header";
 import Home from "../Home/Home.js";
 import Deck from "../Decks/Deck";
 import CreateDeck from "../Decks/CreateDeck";
+import EditDeck from "../Decks/EditDeck";
 import StudyScreen from "../DeckID-study/StudyScreen";
 import NotFound from "./NotFound";
 
@@ -12,6 +13,14 @@ function Layout() {
   //handleDelete 
   //if the item has cardId, delete from card
   //if no cardId, delete from deck
+
+  //need to add loading as rendering condition too
+
+  //abortcontrollers? we do need abort() for some or built in handled?
+
+  //DeckNav rendering condition? nav in general
+
+  //edit deck and create deck button need to be separated
   return (
     <>
       <Header />
@@ -24,7 +33,10 @@ function Layout() {
           <Route path="/decks/new">
             <CreateDeck />
           </Route>
-          <Route path="/decks/:deckId/study">
+          <Route exact path="/decks/:deckId/edit">
+            <EditDeck />
+          </Route>
+          <Route exact path="/decks/:deckId/study">
             <StudyScreen />
           </Route>
           <Route path="/decks/:deckId">

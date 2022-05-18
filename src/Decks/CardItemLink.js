@@ -29,7 +29,7 @@ export const CardItemLink = ({ cardInfo = {}, handleDelete }) => {
                 aria-label="First group"
               >
                 <Link
-                  to={`${url}/cards/${cardInfo.id}`}
+                  to={`${url}/cards/${cardInfo.id}/edit`}
                   className="btn btn-secondary "
                 >
                   Edit

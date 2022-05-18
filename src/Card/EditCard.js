@@ -12,7 +12,7 @@ const EditCard = () => {
     back: "",
     deckId: 0,
   };
-  const [cardInfo, setCardInfo] = useState({...initialCardInfo});
+  const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
 
   const { deckId, cardId } = useParams();
 
@@ -46,7 +46,11 @@ const EditCard = () => {
     <>
       <EditCardNav deckInfo={deckInfo} cardInfo={cardInfo} />
       <h3>Edit Card</h3>
-      <EditCardForm cardInfo={cardInfo}/>
+      <EditCardForm
+        cardInfo={cardInfo}
+        setCardInfo={setCardInfo}
+        initialCardInfo={initialCardInfo}
+      />
     </>
   );
 };

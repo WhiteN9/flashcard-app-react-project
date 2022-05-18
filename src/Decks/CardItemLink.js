@@ -12,27 +12,40 @@ export const CardItemLink = ({ cardInfo = {}, handleDelete }) => {
   return (
     <article className="card list-group-item list-group-item-action">
       <div className="card-body">
-        <p>{cardInfo.front}</p>
-        <p>{cardInfo.back}</p>
-        <div
-          className="btn-toolbar"
-          role="toolbar"
-          aria-label="Toolbar with button groups"
-        >
-          <div className="btn-group" role="group" aria-label="First group">
-            <Link
-              to={`${url}/cards/${cardInfo.id}`}
-              className="btn btn-secondary ml-auto"
-            >
-              Edit Card
-            </Link>
+        <div className="row">
+          <div className="col">
+            <p>{cardInfo.front}</p>
           </div>
-          <div
-            className="btn-group ml-auto"
-            role="group"
-            aria-label="First group"
-          >
-            <button className="btn btn-danger" onClick={handleDelete}></button>
+          <div className="col">
+            <p>{cardInfo.back}</p>
+            <div
+              className="btn-toolbar d-flex justify-content-end"
+              role="toolbar"
+              aria-label="Toolbar with button groups"
+            >
+              <div
+                className="btn-group mr-2"
+                role="group"
+                aria-label="First group"
+              >
+                <Link
+                  to={`${url}/cards/${cardInfo.id}`}
+                  className="btn btn-secondary "
+                >
+                  Edit
+                </Link>
+              </div>
+              <div
+                className="btn-group"
+                role="group"
+                aria-label="First group"
+              >
+                <button
+                  className="btn btn-danger"
+                  onClick={handleDelete}
+                ></button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

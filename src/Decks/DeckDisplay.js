@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { DeckDisplayNav } from "./DeckDisplayNav";
 
 export const DeckDisplay = ({ deckInfo, handleDelete, cardList }) => {
   return (
     <>
+      <DeckDisplayNav deckInfo={deckInfo} />
       <article>
         <div>
           <h5>{deckInfo.name}</h5>

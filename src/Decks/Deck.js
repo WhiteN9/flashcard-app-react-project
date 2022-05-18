@@ -7,7 +7,7 @@ import {
   useHistory,
 } from "react-router-dom";
 import { readDeck, deleteDeck, deleteCard } from "../utils/api";
-import { DeckNav } from "./DeckNav";
+
 import { CardItemLink } from "./CardItemLink";
 import EditDeck from "../Decks/EditDeck";
 import StudyScreen from "./StudyScreen";
@@ -82,14 +82,12 @@ export default function Deck() {
 
   return (
     <React.Fragment>
-      <DeckNav deckInfo={deckInfo} />
-
       <Switch>
         <Route path={`${path}/edit`}>
-          <EditDeck />
+          <EditDeck deckInfo={deckInfo} />
         </Route>
         <Route path={`${path}/study`}>
-          <StudyScreen />
+          <StudyScreen deckInfo={deckInfo} />
         </Route>
         <Route path={`${path}`}>
           <DeckDisplay

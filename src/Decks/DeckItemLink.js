@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 //not sure what is the default for
-export const DeckItemLink = ({ deck = { cards: [] }, handleDelete }) => {
+export const DeckItemLink = ({ deckInfo = { cards: [] }, handleDelete }) => {
   // console.log(id)
 
   // Moved to parent component
@@ -19,22 +19,22 @@ export const DeckItemLink = ({ deck = { cards: [] }, handleDelete }) => {
     <article className="card list-group-item list-group-item-action">
       <div className="card-body">
         <div className="d-flex justify-content-between">
-          <h5 className="card-title">{deck.name}</h5>
-          <small className="card-text">{deck.cards.length} cards</small>
+          <h5 className="card-title">{deckInfo.name}</h5>
+          <small className="card-text">{deckInfo.cards.length} cards</small>
         </div>
-        <p>{deck.description}</p>
+        <p>{deckInfo.description}</p>
         <div
           className="btn-toolbar"
           role="toolbar"
           aria-label="Toolbar with button groups"
         >
           <div className="btn-group" role="group" aria-label="First group">
-            <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">
+            <Link to={`/decks/${deckInfo.id}`} className="btn btn-secondary mr-2">
               View
             </Link>
           </div>
           <div className="btn-group" role="group" aria-label="First group">
-            <Link to={`/decks/${deck.id}/study`} className="btn btn-primary">
+            <Link to={`/decks/${deckInfo.id}/study`} className="btn btn-primary">
               Study
             </Link>
           </div>

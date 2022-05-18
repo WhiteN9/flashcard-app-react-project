@@ -6,7 +6,10 @@ import { CardItemLink } from "./CardItemLink-torefactor";
 
 //setting default values are very important to not break the page at initial load
 export default function StudyScreen() {
-  const [deckInfo, setDeckInfo] = useState({ cards: [] });
+  const [deckInfo, setDeckInfo] = useState({ cards: [] }); 
+  //default value with an object of `cards` property with an empty array value
+  //so that the `card` variable have something "defined" to read while waiting for the
+  //actual deckInfo.cards
   const [cardIndex, setCardIndex] = useState(0);
   const [flipped, setFlipped] = useState(false); //flipped - flip
 
@@ -24,9 +27,12 @@ export default function StudyScreen() {
       }
     }
     readDeckInfo();
-    return () => controller.abort();
+    return () => {
+      console.log("unmounting study screen");
+      controller.abort();
+    };
   }, [deckId]);
-
+  console.log(deckInfo);
   const card = deckInfo.cards[cardIndex] || {};
 
   // console.log(card);
@@ -101,9 +107,7 @@ export default function StudyScreen() {
             You need at least 3 cards to study. There are{" "}
             {deckInfo.cards.length} cards in this deck.
           </p>
-          <button className="btn btn-primary">
-            Add Cards
-          </button>
+          <button className="btn btn-primary">Add Cards</button>
         </div>
       )}
     </React.Fragment>

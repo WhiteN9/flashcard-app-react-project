@@ -34,21 +34,21 @@ export default function Home() {
     };
   }, []);
 
-  const handleDelete = async (deck) => {
-    console.log(deck);
+  const handleDelete = async (deckInfo) => {
+    console.log(deckInfo);
     const result = window.confirm("Delete this deck?");
     if (result) {
       console.log("deleted post");
-      await deleteDeck(deck.id);
+      await deleteDeck(deckInfo.id);
       history.go(0);
     }
   };
 
-  const deckItemLinks = deckList.map((deck) => (
+  const deckItemLinks = deckList.map((deckInfo) => (
     <DeckItemLink
-      key={deck.id}
-      deck={deck}
-      handleDelete={() => handleDelete(deck)}
+      key={deckInfo.id}
+      deckInfo={deckInfo}
+      handleDelete={() => handleDelete(deckInfo)}
     />
   ));
 

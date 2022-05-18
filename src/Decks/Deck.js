@@ -8,6 +8,7 @@ import StudyScreen from "./StudyScreen";
 import NotFound from "../Layout/NotFound";
 import { DeckDisplay } from "./DeckDisplay";
 import CreateCard from "../Card/CreateCard";
+import EditCard from "../Card/EditCard";
 
 export default function Deck() {
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
@@ -87,6 +88,9 @@ export default function Deck() {
         </Route>
         <Route path={`${path}/cards/new`}>
           <CreateCard />
+        </Route>
+        <Route path={`${path}/cards/:cardId/edit`}>
+          <EditCard />
         </Route>
         <Route path={`${path}`}>
           <DeckDisplay

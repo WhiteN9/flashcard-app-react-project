@@ -21,6 +21,8 @@ function Layout() {
   //DeckNav rendering condition? nav in general
 
   //edit deck and create deck button need to be separated
+
+
   return (
     <>
       <Header />
@@ -54,3 +56,11 @@ function Layout() {
 export default Layout;
 
 //Route to the card?
+
+
+{/* <Route exact path="/decks/:deckId/edit">
+<EditDeck />
+</Route>
+<Route exact path="/decks/:deckId/study">
+<StudyScreen />
+</Route> */}

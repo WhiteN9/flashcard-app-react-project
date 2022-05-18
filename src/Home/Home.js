@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link, Route, Switch, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import { listDecks, deleteDeck } from "../utils/api";
 
-import { DeckItemLink } from "../Decks/DeckItemLink.js";
+import { HomeDecks } from "./HomeDecks.js";
 
 export default function Home() {
   const [deckList, setDeckList] = useState([]);
@@ -34,7 +34,7 @@ export default function Home() {
     };
   }, []);
 
-  const handleDelete = async (deckInfo) => {
+  const handleDeckDelete = async (deckInfo) => {
     console.log(deckInfo);
     const result = window.confirm("Delete this deck?");
     if (result) {
@@ -44,11 +44,11 @@ export default function Home() {
     }
   };
 
-  const deckItemLinks = deckList.map((deckInfo) => (
-    <DeckItemLink
+  const homeDecks = deckList.map((deckInfo) => (
+    <HomeDecks
       key={deckInfo.id}
       deckInfo={deckInfo}
-      handleDelete={() => handleDelete(deckInfo)}
+      handleDeckDelete={() => handleDeckDelete(deckInfo)}
     />
   ));
 
@@ -72,9 +72,7 @@ export default function Home() {
           Create Deck{" "}
         </Link>
       </div>
-      <div className="list-group">{deckItemLinks}</div>
+      <div className="list-group">{homeDecks}</div>
     </div>
   );
 }
-
-//might need to put deckList into a component?

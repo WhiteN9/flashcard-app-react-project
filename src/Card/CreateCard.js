@@ -33,11 +33,11 @@ const CreateCard = () => {
       controller.abort();
     };
   }, [deckId]);
-
+  console.log(deckInfo);
   return (
     <>
       <CreateCardNav deckInfo={deckInfo} />
-      <h1>Create Card</h1>
+      <h3>{deckInfo.name}: Add Card</h3> 
       <CreateCardForm deckInfo={deckInfo} />
     </>
   );

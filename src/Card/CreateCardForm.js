@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { createCard } from "../utils/api";
 import { CardForm } from "../Form/CardForm.js";
 
-export const CreateCardForm = ({deckInfo}) => {
+export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
   const history = useHistory();
+
   const initialCardInfo = {
-    name: "",
-    description: "",
+    front: "",
+    back: "",
+    deckId: id,
   };
   const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
+
+  useEffect(() => {
+    setCardInfo({ ...cardInfo, deckId: id });
+  }, [id]);
 
   const controller = new AbortController();
 
@@ -25,16 +31,16 @@ export const CreateCardForm = ({deckInfo}) => {
     setCardInfo({ ...initialCardInfo });
     history.go(-1);
   };
+  
   return (
     <React.Fragment>
-      <h2>{deckInfo.name}: Add Card</h2> 
       <CardForm
         onSubmit={handleCreateCard}
         onCancel={onCancel}
         cardInfo={cardInfo}
         setCardInfo={setCardInfo}
-        submitLabel="Submit"
-        cancelLabel="Cancel"
+        submitLabel="Save"
+        cancelLabel="Done"
       />
     </React.Fragment>
   );

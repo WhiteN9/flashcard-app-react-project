@@ -7,6 +7,7 @@ export const CardForm = ({
   cancelLabel,
 }) => {
   const handleInputChange = (evt) => {
+    console.log(cardInfo);
     console.log(evt.target.value);
     setCardInfo({ ...cardInfo, [evt.target.name]: evt.target.value });
   };
@@ -17,7 +18,7 @@ export const CardForm = ({
         <label htmlFor="card-front">Front</label>
         <textarea
           id="card-front"
-          name="card-front"
+          name="front"
           value={cardInfo.front}
           onChange={handleInputChange}
           placeholder="Front side of card"
@@ -30,7 +31,7 @@ export const CardForm = ({
         <label htmlFor="card-back">Back</label>
         <textarea
           id="card-back"
-          name="card-back"
+          name="back"
           value={cardInfo.back}
           onChange={handleInputChange}
           placeholder="Back side of card"

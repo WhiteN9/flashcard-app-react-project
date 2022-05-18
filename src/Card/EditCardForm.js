@@ -5,8 +5,9 @@ import { CardForm } from "../Form/CardForm";
 
 export const EditCardForm = () => {
   const initialCardInfo = {
-    name: "",
-    description: "",
+    front: "",
+    back: "",
+    deckId: id,
   };
   const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
 

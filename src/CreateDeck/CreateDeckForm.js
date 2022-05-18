@@ -18,20 +18,19 @@ export const CreateDeckForm = () => {
     const data = await createDeck(deckInfo, controller.signal);
     console.log(data);
     setDeckInfo({ ...initialDeckInfo });
-    history.push("/decks/");
+    history.push(`/decks/${data.id}`);
   };
 
   const onCancel = () => {
     setDeckInfo({ ...initialDeckInfo });
     history.push("/");
   };
-
   return (
     <React.Fragment>
       <DeckForm
         onSubmit={handleCreateDeck}
         onCancel={onCancel}
-        deckInfo
+        deckInfo={deckInfo}
         setDeckInfo={setDeckInfo}
         submitLabel="Submit"
         cancelLabel="Cancel"

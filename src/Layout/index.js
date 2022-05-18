@@ -16,7 +16,7 @@ function Layout() {
   //edit deck and create deck button need to be separated
 
   return (
-    <>
+    <React.Fragment>
       <Header />
       <div className="container">
         {/* TODO: Implement the screen starting here */}
@@ -35,7 +35,7 @@ function Layout() {
           </Route>
         </Switch>
       </div>
-    </>
+    </React.Fragment>
   );
 }
 

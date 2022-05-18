@@ -43,7 +43,7 @@ const EditCard = () => {
   }, [deckInfo]);
 
   return (
-    <>
+    <React.Fragment>
       <EditCardNav deckInfo={deckInfo} cardInfo={cardInfo} />
       <h3>Edit Card</h3>
       <EditCardForm
@@ -51,7 +51,7 @@ const EditCard = () => {
         setCardInfo={setCardInfo}
         initialCardInfo={initialCardInfo}
       />
-    </>
+    </React.Fragment>
   );
 };
 export default EditCard;

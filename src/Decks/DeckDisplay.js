@@ -1,9 +1,10 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { DeckDisplayNav } from "./DeckDisplayNav";
 
 export const DeckDisplay = ({ deckInfo, handleDelete, cardList }) => {
   return (
-    <>
+    <React.Fragment>
       <DeckDisplayNav deckInfo={deckInfo} />
       <article>
         <div>
@@ -68,6 +69,6 @@ export const DeckDisplay = ({ deckInfo, handleDelete, cardList }) => {
       </article>
       <h2 className="mt-4">Cards</h2>
       <article>{cardList}</article>
-    </>
+    </React.Fragment>
   );
 };

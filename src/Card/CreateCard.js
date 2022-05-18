@@ -35,11 +35,11 @@ const CreateCard = () => {
   }, [deckId]);
   console.log(deckInfo);
   return (
-    <>
+    <React.Fragment>
       <CreateCardNav deckInfo={deckInfo} />
-      <h3>{deckInfo.name}: Add Card</h3> 
+      <h3>{deckInfo.name}: Add Card</h3>
       <CreateCardForm deckInfo={deckInfo} />
-    </>
+    </React.Fragment>
   );
 };
 export default CreateCard;

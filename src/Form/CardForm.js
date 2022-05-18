@@ -14,29 +14,29 @@ export const CardForm = ({
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">
-        <label htmlFor="card-front">Front:</label>
+        <label htmlFor="card-front">Front</label>
         <textarea
           id="card-front"
           name="card-front"
           value={cardInfo.front}
           onChange={handleInputChange}
-          placeholder="Brief description of the front"
+          placeholder="Front side of card"
           required
           className="form-control"
-          rows="4"
+          rows="3"
         />
       </div>
       <div className="form-group">
-        <label htmlFor="card-back">Back:</label>
+        <label htmlFor="card-back">Back</label>
         <textarea
           id="card-back"
           name="card-back"
           value={cardInfo.back}
           onChange={handleInputChange}
-          placeholder="Brief description of the back"
+          placeholder="Back side of card"
           required
           className="form-control"
-          rows="4"
+          rows="3"
         />
       </div>
       <div
@@ -48,7 +48,6 @@ export const CardForm = ({
           <button
             type="button"
             className="btn btn-secondary"
-            name="cancel"
             onClick={onCancel}
           >
             {cancelLabel}

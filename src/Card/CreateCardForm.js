@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { createCard } from "../utils/api";
 import { CardForm } from "../Form/CardForm.js";
 
-export const CreateCardForm = () => {
+export const CreateCardForm = ({deckInfo}) => {
   const history = useHistory();
   const initialCardInfo = {
     name: "",
@@ -18,15 +18,16 @@ export const CreateCardForm = () => {
     const data = await createCard(cardInfo, controller.signal);
     console.log(data);
     setCardInfo({ ...initialCardInfo });
-    history.push(`/decks/${data.id}`);
+    history.go(-1);
   };
 
   const onCancel = () => {
     setCardInfo({ ...initialCardInfo });
-    history.push("/");
+    history.go(-1);
   };
   return (
     <React.Fragment>
+      <h2>{deckInfo.name}: Add Card</h2> 
       <CardForm
         onSubmit={handleCreateCard}
         onCancel={onCancel}

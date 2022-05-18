@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Header from "./Header";
 import Home from "../Home/Home.js";
 import Deck from "../Decks/Deck";
-import CreateDeck from "../Decks/CreateDeck";
+import CreateDeck from "../CreateDeck/CreateDeck";
 import EditDeck from "../Decks/EditDeck";
 import StudyScreen from "../DeckID-study/StudyScreen";
 import NotFound from "./NotFound";

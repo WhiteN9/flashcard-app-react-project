@@ -5,7 +5,7 @@ import { DeckNav } from "./DeckNav";
 import { CardItemLink } from "./CardItemLink";
 
 export default function Deck() {
-  const [deckInfo, setDeckInfo] = useState({cards:[]});
+  const [deckInfo, setDeckInfo] = useState({ cards: [] });
   // still need cards:[] because on initial load,
   // it will try to access cards to map
 
@@ -40,14 +40,27 @@ export default function Deck() {
     };
   }, [routeMatch.params.deckId]);
 
-  const handleDelete = async (cardInfo) => {
-    console.log(cardInfo);
-    const result = window.confirm("Delete this card? \n \n You will not be able to recover it"); 
-    // need to fix this for deck and card in this component
-    if (result) {
-      console.log("deleted card");
-      await deleteCard(cardInfo.id);
-      history.go(0);
+  const handleDelete = async (item) => {
+    console.log(item.deckId);
+    console.log("deckId" in item); //true if card
+    console.log(item.hasOwnProperty('deckId')); //true if card
+    console.log(item.deckId !== undefined); //true if card
+    if ("deckId" in item) {
+      const result = window.confirm(
+        "Delete this card? \n \n You will not be able to recover it"
+      );
+      if (result) {
+        console.log("deleted card");
+        await deleteCard(item.id);
+        history.go(0);
+      }
+    } else {
+      const result = window.confirm("Delete this deck?");
+      if (result) {
+        console.log("deleted deck");
+        await deleteDeck(item.id);
+        history.goBack();
+      }
     }
   };
 
@@ -59,7 +72,7 @@ export default function Deck() {
     />
   ));
 
-//   console.log(deckInfo.cards);
+  //   console.log(deckInfo.cards);
 
   return (
     <React.Fragment>
@@ -103,7 +116,12 @@ export default function Deck() {
             role="group"
             aria-label="First group"
           >
-            <button className="btn btn-danger" ></button>
+            <button
+              className="btn btn-danger"
+              onClick={() => handleDelete(deckInfo)}
+            >
+              Delete
+            </button>
           </div>
         </div>
       </article>

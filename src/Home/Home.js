@@ -38,7 +38,7 @@ export default function Home() {
     console.log(deckInfo);
     const result = window.confirm("Delete this deck?");
     if (result) {
-      console.log("deleted post");
+      console.log("deleted deck");
       await deleteDeck(deckInfo.id);
       history.go(0);
     }

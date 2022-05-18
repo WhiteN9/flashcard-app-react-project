@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useRouteMatch, Link } from "react-router-dom";
 import { readDeck, deleteDeck } from "../utils/api";
 import { DeckNav } from "./DeckNav";
+import { CardItemLink } from "./CardItemLink";
 
 export default function Deck() {
-  const [deckInfo, setDeckInfo] = useState({ cards: [] });
-  const [cardIndex, setCardIndex] = useState(0);
+  const [deckInfo, setDeckInfo] = useState({cards:[]});
+  // still need cards:[] because on initial load,
+  // it will try to access cards to map
 
   const routeMatch = useRouteMatch();
   //   console.log(routeMatch);
@@ -37,16 +39,24 @@ export default function Deck() {
     };
   }, [routeMatch.params.deckId]);
 
-  const handleDelete = async (deck) => {
-    console.log(deck);
-    const result = window.confirm("Delete this deck?");
+  const handleDelete = async (cardInfo) => {
+    console.log(cardInfo);
+    const result = window.confirm("Delete this card?");
     if (result) {
-      console.log("deleted post");
-      await deleteDeck(deck.id);
+      console.log("deleted card");
+      await deleteDeck(cardInfo.id);
     }
   };
 
-  const card = deckInfo.cards[cardIndex] || {};
+  const cardList = deckInfo.cards.map((cardInfo) => (
+    <CardItemLink
+      key={cardInfo.id}
+      cardInfo={cardInfo}
+      handleDelete={() => handleDelete(cardInfo)}
+    />
+  ));
+
+//   console.log(deckInfo.cards);
 
   return (
     <React.Fragment>
@@ -54,7 +64,6 @@ export default function Deck() {
       <article>
         <div>
           <h5>{deckInfo.name}</h5>
-          <small className="card-text">{deckInfo.cards.length} cards</small>
         </div>
         <p>{deckInfo.description}</p>
         <div
@@ -64,18 +73,26 @@ export default function Deck() {
         >
           <div className="btn-group" role="group" aria-label="First group">
             <Link
-              to={`/decks/${deckInfo.id}`}
+              to={`/decks/${deckInfo.id}/edit`}
               className="btn btn-secondary mr-2"
             >
-              View
+              Edit
             </Link>
           </div>
           <div className="btn-group" role="group" aria-label="First group">
             <Link
               to={`/decks/${deckInfo.id}/study`}
-              className="btn btn-primary"
+              className="btn btn-primary mr-2"
             >
               Study
+            </Link>
+          </div>
+          <div className="btn-group" role="group" aria-label="First group">
+            <Link
+              to={`/decks/${deckInfo.id}/cards/new`}
+              className="btn btn-primary"
+            >
+              Add Cards
             </Link>
           </div>
           <div
@@ -87,6 +104,8 @@ export default function Deck() {
           </div>
         </div>
       </article>
+      <h2 className="mt-4">Cards</h2>
+      <article>{cardList}</article>
     </React.Fragment>
   );
 }

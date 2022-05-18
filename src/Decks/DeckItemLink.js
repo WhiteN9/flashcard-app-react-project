@@ -30,7 +30,7 @@ export const DeckItemLink = ({ deckInfo = { cards: [] }, handleDelete }) => {
         >
           <div className="btn-group" role="group" aria-label="First group">
             <Link to={`/decks/${deckInfo.id}`} className="btn btn-secondary mr-2">
-              View
+              Edit
             </Link>
           </div>
           <div className="btn-group" role="group" aria-label="First group">

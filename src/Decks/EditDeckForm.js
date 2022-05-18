@@ -1,14 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { createDeck } from "../utils/api";
-import { useHistory } from "react-router-dom";
+import { useHistory, useRouteMatch } from "react-router-dom";
 
-export const EditDeckForm = () => {
+export const EditDeckForm = ({
+  deckInfo: { name = "" } = "",
+  deckInfo: { description = "" } = "",
+}) => {
+  console.log(name, description);
   const history = useHistory();
   const initialDeckForm = {
-    name: "",
-    description: "",
+    name: name,
+    description: description,
   };
   const [deckForm, setDeckForm] = useState({ ...initialDeckForm });
+
+  const useroutematch = useRouteMatch();
+  // params: {deckId: '1'}
+  // path: "/decks/:deckId/edit"
+  // url: "/decks/1/edit"
+  console.log(useroutematch);
+  useEffect(() => {
+    setDeckForm({
+      ...deckForm,
+      name: name,
+      description: description,
+    });
+  }, [name, description]);
 
   const handleChange = (evt) => {
     console.log(evt.target.value);
@@ -19,14 +36,12 @@ export const EditDeckForm = () => {
     evt.preventDefault();
     if (deckForm.name !== "") {
       await createDeck(deckForm);
-      setDeckForm({ ...initialDeckForm });
-      history.push("/deck");
+      history.push(`/decks/${useroutematch.params.deckId}`);
     } else {
-      setDeckForm({ ...initialDeckForm });
       history.push("/");
     }
   };
-
+  console.log(deckForm);
   return (
     <React.Fragment>
       <form name="createNewDeck" onSubmit={handleButton}>

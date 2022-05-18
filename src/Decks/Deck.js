@@ -19,7 +19,7 @@ export default function Deck() {
   // it will try to access cards to map
 
   const history = useHistory();
-  const { params, url, path } = useRouteMatch();
+  const { params, path } = useRouteMatch();
   //   console.log(routeMatch);
   //   params: {
   //     deckId: "1";

@@ -1,12 +1,12 @@
 import React from "react";
 import { CreateDeckNav } from "./CreateDeckNav";
-import { CreateDeckForm } from "./CreateDeckForm";
+import { EditDeckForm } from "../Decks/EditDeckForm";
 
 const CreateDeck = () => (
   <>
     <CreateDeckNav />
     <h1>Create Deck</h1>
-    <CreateDeckForm />
+    <EditDeckForm />
   </>
 );
 

@@ -5,8 +5,6 @@ import Header from "./Header";
 import Home from "../Home/Home.js";
 import Deck from "../Decks/Deck";
 import CreateDeck from "../CreateDeck/CreateDeck";
-import EditDeck from "../Decks/EditDeck";
-import StudyScreen from "../DeckID-study/StudyScreen";
 import NotFound from "./NotFound";
 
 function Layout() {
@@ -17,7 +15,6 @@ function Layout() {
   //DeckNav rendering condition? nav in general
 
   //edit deck and create deck button need to be separated
-
 
   return (
     <>
@@ -30,12 +27,6 @@ function Layout() {
           </Route>
           <Route path="/decks/new">
             <CreateDeck />
-          </Route>
-          <Route exact path="/decks/:deckId/edit">
-            <EditDeck />
-          </Route>
-          <Route exact path="/decks/:deckId/study">
-            <StudyScreen />
           </Route>
           <Route path="/decks/:deckId">
             <Deck />
@@ -50,13 +41,3 @@ function Layout() {
 }
 
 export default Layout;
-
-//Route to the card?
-
-
-{/* <Route exact path="/decks/:deckId/edit">
-<EditDeck />
-</Route>
-<Route exact path="/decks/:deckId/study">
-<StudyScreen />
-</Route> */}

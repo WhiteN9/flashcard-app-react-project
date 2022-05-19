@@ -12,6 +12,13 @@ import EditCard from "../Card/EditCard";
 
 export default function Deck() {
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
+
+  const initialCardInfo = {
+    front: "",
+    back: "",
+    deckId: id,
+  };
+  const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
   // still need cards:[] because on initial load,
   // it will try to access cards to map
 
@@ -20,14 +27,7 @@ export default function Deck() {
     params: { deckId },
     path,
   } = useRouteMatch();
-  //   console.log(routeMatch);
-  //   params: {
-  //     deckId: "1";
-  //   }
-  //   path: "/decks/:deckId";
-  //   url: "/decks/1";
 
-  //   console.log(deckInfo);
   useEffect(() => {
     const controller = new AbortController();
     async function readDeckInfo() {
@@ -44,6 +44,11 @@ export default function Deck() {
       controller.abort();
     };
   }, [deckId]);
+
+  useEffect(() => {
+    setCardInfo({ ...cardInfo, deckId: id });
+  }, [deckInfo]);
+
 
   const handleDelete = async (item) => {
     console.log(item.deckId);

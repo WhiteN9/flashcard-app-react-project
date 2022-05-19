@@ -3,12 +3,12 @@ import { Route, Switch, useRouteMatch, useHistory } from "react-router-dom";
 import { readDeck, deleteDeck, deleteCard } from "../utils/api";
 
 import { CardItemLink } from "./CardItemLink";
-import EditDeck from "../Decks/EditDeck";
-import StudyScreen from "./StudyScreen";
+import EditDeck from "./Deck-Cards/EditDeck";
+import StudyScreen from "./Deck-Cards/StudyScreen";
 import NotFound from "../Layout/NotFound";
 import { DeckDisplay } from "./DeckDisplay";
-import CreateCard from "../Card/CreateCard";
-import EditCard from "../Card/EditCard";
+import CreateCard from "./Deck-Cards/CreateCard";
+import EditCard from "./Deck-Cards/EditCard";
 
 export default function Deck() {
   const [deckInfo, setDeckInfo] = useState({ cards: [] });

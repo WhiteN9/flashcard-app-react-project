@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
-import { readDeck } from "../utils/api";
+import { readDeck } from "../../utils/api";
 import { CreateCardForm } from "./CreateCardForm.js";
 import { CreateCardNav } from "./CreateCardNav.js";
 
@@ -33,7 +33,10 @@ const CreateCard = () => {
       controller.abort();
     };
   }, [deckId]);
-  console.log(deckInfo);
+  console.log("create card render")
+  
+  
+  
   return (
     <React.Fragment>
       <CreateCardNav deckInfo={deckInfo} />

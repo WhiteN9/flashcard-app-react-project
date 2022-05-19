@@ -9,17 +9,12 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "fake deck",
-      "description": "fake description",
-      "id": 3
     }
   ],
   "cards": [
     {
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOM.yuyuyuyuyu",
+      "front": "Differentiate between Real DOM and Virtual DOM.",
       "back": "Virtual DOM updates are faster but do not directly update the HTML",
       "deckId": 1
     },
@@ -48,52 +43,11 @@
       "id": 5
     },
     {
-      "front": "real",
-      "back": "fake\n",
-      "deckId": 1,
-      "id": 6
-    },
-    {
-      "front": "gsdgsdg",
-      "back": "sdgsg",
+      "cards": [],
+      "front": "b",
+      "back": "b",
       "deckId": 1,
       "id": 7
-    },
-    {
-      "front": "dsgsdgsd",
-      "back": "gsdgsdg",
-      "deckId": 3,
-      "id": 8
-    },
-    {
-      "front": "gsdgsdgsdg",
-      "back": "sdgsdgsdg",
-      "deckId": 3,
-      "id": 9
-    },
-    {
-      "front": "gsdgsdgsdgsdg",
-      "back": "sdgsdgsdg",
-      "deckId": 3,
-      "id": 10
-    },
-    {
-      "front": "dasdsad",
-      "back": "sadsad",
-      "deckId": 2,
-      "id": 11
-    },
-    {
-      "front": "dsadasd",
-      "back": "asdsa",
-      "deckId": 2,
-      "id": 12
-    },
-    {
-      "front": "dasdasdas",
-      "back": "dasdsadasd",
-      "deckId": 2,
-      "id": 13
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { readCard, updateCard } from "../utils/api";
-import { CardForm } from "../Form/CardForm";
+import { readCard, updateCard } from "../../utils/api";
+import { CardForm } from "../../Form/CardForm";
 
 export const EditCardForm = ({cardInfo, setCardInfo, initialCardInfo}) => {
   const history = useHistory();

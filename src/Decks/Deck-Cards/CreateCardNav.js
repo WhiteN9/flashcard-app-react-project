@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 
 export const CreateCardNav = ({ deckInfo }) => {
   const { deckId } = useParams();
+  console.log("create card nav render")
   return (
     <React.Fragment>
       <nav aria-label="breadcrumb">

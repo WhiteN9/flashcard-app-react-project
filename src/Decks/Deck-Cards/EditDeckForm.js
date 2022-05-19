@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { readDeck, updateDeck } from "../utils/api";
-import { DeckForm } from "../Form/DeckForm";
+import { readDeck, updateDeck } from "../../utils/api";
+import { DeckForm } from "../../Form/DeckForm";
 
 export const EditDeckForm = () => {
   const initialDeckInfo = {

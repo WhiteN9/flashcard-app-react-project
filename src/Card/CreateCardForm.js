@@ -21,7 +21,8 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
 
   const handleCreateCard = async (evt) => {
     evt.preventDefault();
-    await createCard(cardInfo.deckId,cardInfo, controller.signal);
+    const data = await createCard(cardInfo.deckId,cardInfo, controller.signal);
+    console.log(data);
     setCardInfo({ ...initialCardInfo });
   };
 

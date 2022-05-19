@@ -14,17 +14,12 @@
       "name": "fake deck",
       "description": "fake description",
       "id": 3
-    },
-    {
-      "name": "Rendering in React",
-      "description": "Fake deck",
-      "id": 4
     }
   ],
   "cards": [
     {
       "id": 1,
-      "front": "Differentiate between Real DOM and Virtual DOMfwefwaef",
+      "front": "Differentiate between Real DOM and Virtual DOM.yuyuyuyuyu",
       "back": "Virtual DOM updates are faster but do not directly update the HTML",
       "deckId": 1
     },
@@ -51,6 +46,18 @@
       "back": "Renders the first matching child <Route> ",
       "deckId": 2,
       "id": 5
+    },
+    {
+      "front": "real",
+      "back": "fake\n",
+      "deckId": 1,
+      "id": 6
+    },
+    {
+      "front": "gsdgsdg",
+      "back": "sdgsg",
+      "deckId": 1,
+      "id": 7
     },
     {
       "front": "dsgsdgsd",

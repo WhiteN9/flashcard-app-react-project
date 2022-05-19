@@ -13,7 +13,6 @@ export const EditCardForm = ({ cardInfo, setCardInfo, initialCardInfo }) => {
     evt.preventDefault();
     const controller = new AbortController();
     await updateCard(cardInfo, controller.signal);
-    history.push(0);
     history.push(`/decks/${deckId}`);
   };
   const onCancel = () => {

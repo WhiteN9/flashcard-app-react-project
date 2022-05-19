@@ -6,12 +6,12 @@ import { CardForm } from "../../Form/CardForm";
 export const EditCardForm = ({ cardInfo, setCardInfo, initialCardInfo }) => {
   const history = useHistory();
   const { deckId, cardId } = useParams();
-  const controller = new AbortController();
 
   //Render a card form that is capable of editing cards
   //or cancel and go back to the deck page by the deck's ID
   const handleEditCard = async (evt) => {
     evt.preventDefault();
+    const controller = new AbortController();
     const data = await updateCard(cardInfo, controller.signal);
     console.log(data);
     setCardInfo({ ...initialCardInfo });

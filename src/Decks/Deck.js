@@ -43,14 +43,12 @@ export default function Deck() {
         "Delete this card? \n \n You will not be able to recover it"
       );
       if (result) {
-        console.log("deleted card");
         await deleteCard(item.id);
         history.go(0);
       }
     } else {
       const result = window.confirm("Delete this deck?");
       if (result) {
-        console.log("deleted deck");
         await deleteDeck(item.id);
         history.goBack();
       }

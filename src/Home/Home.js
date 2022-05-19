@@ -5,12 +5,12 @@ import { HomeDecks } from "./HomeDecks.js";
 
 export default function Home() {
   const history = useHistory();
-  const controller = new AbortController();
 
   const [deckList, setDeckList] = useState([]);
   //make an api request to get a list of the decks
   useEffect(() => {
     setDeckList([]);
+    const controller = new AbortController();
     async function getDeckList() {
       try {
         const listDeckData = await listDecks(controller.signal);
@@ -21,17 +21,16 @@ export default function Home() {
     }
     getDeckList();
     return function cleanUp() {
-      console.log("unmounting Home");
       controller.abort();
     };
   }, []);
 
   //create a delete function that displays a warning message before deleting the deck
   const handleDeckDelete = async (deckInfo) => {
+    const controller = new AbortController();
     const result = window.confirm("Delete this deck?");
     if (result) {
-      console.log("deleted deck");
-      await deleteDeck(deckInfo.id);
+      await deleteDeck(deckInfo.id,controller.signal);
       history.go(0);
     }
   };

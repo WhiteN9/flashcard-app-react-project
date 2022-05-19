@@ -5,7 +5,6 @@ import { DeckForm } from "../Form/DeckForm";
 
 export const CreateDeckForm = () => {
   const history = useHistory();
-  const controller = new AbortController();
 
   //declare deckInfo state and its initial state
   const initialDeckInfo = {
@@ -18,6 +17,7 @@ export const CreateDeckForm = () => {
   //or cancelling and go back to the home page
   const handleCreateDeck = async (evt) => {
     evt.preventDefault();
+    const controller = new AbortController();
     const data = await createDeck(deckInfo, controller.signal);
     setDeckInfo({ ...initialDeckInfo });
     history.push(`/decks/${data.id}`);

@@ -6,7 +6,6 @@ import { StudyScreenNav } from "./StudyScreenNav";
 export default function StudyScreen() {
   const history = useHistory();
   const deckId = useParams().deckId;
-  const controller = new AbortController();
 
   //declare state of the deck
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
@@ -15,6 +14,7 @@ export default function StudyScreen() {
 
   //make an API request to get the current deck information using the link ID
   useEffect(() => {
+    const controller = new AbortController();
     async function readDeckInfo() {
       try {
         const data = await readDeck(deckId, controller.signal);

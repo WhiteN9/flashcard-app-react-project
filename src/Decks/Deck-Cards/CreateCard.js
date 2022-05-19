@@ -5,13 +5,13 @@ import { CreateCardForm } from "./CreateCardForm.js";
 import { CreateCardNav } from "./CreateCardNav.js";
 
 const CreateCard = () => {
-  const controller = new AbortController();
   const { deckId } = useParams();
 
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
-  
+
   //declare the deckInfo state and make an API request to update to the current deck by the url ID
   useEffect(() => {
+    const controller = new AbortController();
     async function readDeckInfo() {
       try {
         const data = await readDeck(deckId, controller.sginal);

@@ -5,7 +5,6 @@ import { CardForm } from "../../Form/CardForm.js";
 
 export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
   const history = useHistory();
-  const controller = new AbortController();
 
   const initialCardInfo = {
     front: "",
@@ -13,7 +12,7 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
     deckId: id,
   };
   const [cardInfo, setCardInfo] = useState(initialCardInfo);
-  
+
   //update the cardInfo upon receiving the deck id passed down from its parent component
   useEffect(() => {
     setCardInfo({ ...cardInfo, deckId: id });
@@ -23,6 +22,7 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
   //or cancel and go back to the deck page by the deck's ID
   const handleCreateCard = async (evt) => {
     evt.preventDefault();
+    const controller = new AbortController();
     await createCard(cardInfo.deckId, cardInfo, controller.signal);
     setCardInfo(initialCardInfo);
     history.go(0);

@@ -6,7 +6,6 @@ import { EditCardNav } from "./EditCardNav.js";
 
 const EditCard = () => {
   const { deckId, cardId } = useParams();
-  const controller = new AbortController();
 
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
   const initialCardInfo = {
@@ -15,9 +14,10 @@ const EditCard = () => {
     deckId: 0,
   };
   const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
-  
+
   //on initial load the deck using the current deck ID
   useEffect(() => {
+    const controller = new AbortController();
     async function readDeckInfo() {
       try {
         const data = await readDeck(deckId, controller.signal);
@@ -30,6 +30,7 @@ const EditCard = () => {
   }, []);
   //on initial load the card using the current card ID, update if there is deck ID
   useEffect(() => {
+    const controller = new AbortController();
     async function readCardInfo() {
       try {
         const data = await readCard(cardId, controller.signal);

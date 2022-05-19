@@ -12,7 +12,6 @@ export const CardForm = ({
   const handleInputChange = (evt) => {
     setCardInfo({ ...cardInfo, [evt.target.name]: evt.target.value });
   };
-  console.log("card form render");
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">

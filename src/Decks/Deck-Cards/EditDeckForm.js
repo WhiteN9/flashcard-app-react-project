@@ -6,7 +6,6 @@ import { DeckForm } from "../../Form/DeckForm";
 export const EditDeckForm = () => {
   const history = useHistory();
   const { deckId } = useParams();
-  const controller = new AbortController();
 
   const initialDeckInfo = {
     name: "",
@@ -16,6 +15,7 @@ export const EditDeckForm = () => {
 
   //get the deck based on the url deck ID
   useEffect(() => {
+    const controller = new AbortController();
     async function readDeckInfo() {
       try {
         const data = await readDeck(deckId, controller.signal);
@@ -33,6 +33,7 @@ export const EditDeckForm = () => {
   //upon submitting, make an api request to update the deck
   const handleEditDeck = async (evt) => {
     evt.preventDefault();
+    const controller = new AbortController();
     await updateDeck(deckInfo, controller.signal);
     setDeckInfo({ ...initialDeckInfo });
     history.push(`/decks/${deckId}`);

@@ -10,10 +10,8 @@ export const DeckForm = ({
   cancelLabel,
 }) => {
   const handleInputChange = (evt) => {
-    console.log(evt.target.value);
     setDeckInfo({ ...deckInfo, [evt.target.name]: evt.target.value });
   };
-
   return (
     <form onSubmit={onSubmit}>
       <div className="form-group">

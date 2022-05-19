@@ -21,11 +21,10 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
 
   const handleCreateCard = async (evt) => {
     evt.preventDefault();
-    const data = await createCard(cardInfo.deckId,cardInfo, controller.signal);
-    console.log(data);
+    await createCard(cardInfo.deckId,cardInfo, controller.signal);
     setCardInfo({ ...initialCardInfo });
   };
-
+  
   const onCancel = () => {
     setCardInfo({ ...initialCardInfo });
     history.go(-1);

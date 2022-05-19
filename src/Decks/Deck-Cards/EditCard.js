@@ -5,8 +5,10 @@ import { EditCardForm } from "./EditCardForm.js";
 import { EditCardNav } from "./EditCardNav.js";
 
 const EditCard = () => {
-  const [deckInfo, setDeckInfo] = useState({ cards: [] });
+  const { deckId, cardId } = useParams();
+  const controller = new AbortController();
 
+  const [deckInfo, setDeckInfo] = useState({ cards: [] });
   const initialCardInfo = {
     front: "",
     back: "",
@@ -14,10 +16,7 @@ const EditCard = () => {
   };
   const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
 
-  const { deckId, cardId } = useParams();
-
   useEffect(() => {
-    const controller = new AbortController();
     async function readDeckInfo() {
       try {
         const data = await readDeck(deckId, controller.sginal);
@@ -30,7 +29,6 @@ const EditCard = () => {
   }, []);
 
   useEffect(() => {
-    const controller = new AbortController();
     async function readCardInfo() {
       try {
         const data = await readCard(cardId, controller.sginal);

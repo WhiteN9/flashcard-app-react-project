@@ -7,19 +7,11 @@ import Deck from "../Decks/Deck";
 import NotFound from "./NotFound";
 
 function Layout() {
-  //need to add loading as rendering condition too
-
-  //abortcontrollers? we do need abort() for some or built in handled?
-
-  //DeckNav rendering condition? nav in general
-
-  //edit deck and create deck button need to be separated
 
   return (
     <React.Fragment>
       <Header />
       <div className="container">
-        {/* TODO: Implement the screen starting here */}
         <Switch>
           <Route exact path="/">
             <Home />

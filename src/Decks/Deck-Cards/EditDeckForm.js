@@ -4,19 +4,17 @@ import { readDeck, updateDeck } from "../../utils/api";
 import { DeckForm } from "../../Form/DeckForm";
 
 export const EditDeckForm = () => {
+  const history = useHistory();
+  const { deckId } = useParams();
+  const controller = new AbortController();
+
   const initialDeckInfo = {
     name: "",
     description: "",
   };
   const [deckInfo, setDeckInfo] = useState({ ...initialDeckInfo });
 
-  const history = useHistory();
-  const { deckId } = useParams();
-
-  const controller = new AbortController();
-
   useEffect(() => {
-    const controller = new AbortController();
     async function readDeckInfo() {
       try {
         const data = await readDeck(deckId, controller.signal);

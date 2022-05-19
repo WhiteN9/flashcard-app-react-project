@@ -6,7 +6,6 @@ import { CardForm } from "../../Form/CardForm";
 export const EditCardForm = ({cardInfo, setCardInfo, initialCardInfo}) => {
   const history = useHistory();
   const { cardId, url } = useParams();
-
   const controller = new AbortController();
 
   const handleEditCard = async (evt) => {

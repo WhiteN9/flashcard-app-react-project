@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//the navigation bar for the edit deck with a link to go home or to the current deck
 export const EditDeckNav = ({ deckInfo }) => (
-  <React.Fragment>
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
         <li className="breadcrumb-item">
@@ -14,5 +14,4 @@ export const EditDeckNav = ({ deckInfo }) => (
         <li className="breadcrumb-item active">Edit</li>
       </ol>
     </nav>
-  </React.Fragment>
 );

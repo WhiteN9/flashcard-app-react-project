@@ -5,6 +5,7 @@ import { CardForm } from "../../Form/CardForm.js";
 
 export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
   const history = useHistory();
+  const controller = new AbortController();
 
   const initialCardInfo = {
     front: "",
@@ -16,8 +17,6 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
   useEffect(() => {
     setCardInfo({ ...cardInfo, deckId: id });
   }, [id]);
-
-  const controller = new AbortController();
 
   const handleCreateCard = async (evt) => {
     evt.preventDefault();

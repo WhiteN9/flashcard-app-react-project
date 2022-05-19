@@ -5,6 +5,11 @@ import { StudyScreenNav } from "./StudyScreenNav";
 
 //setting default values are very important to not break the page at initial load
 export default function StudyScreen() {
+  const history = useHistory();
+  const deckId = useParams().deckId;
+  const controller = new AbortController();
+
+  //declare state of the deck
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
   //default value with an object of `cards` property with an empty array value
   //so that the `card` variable have something "defined" to read while waiting for the
@@ -12,11 +17,8 @@ export default function StudyScreen() {
   const [cardIndex, setCardIndex] = useState(0);
   const [flipped, setFlipped] = useState(false); //flipped - flip
 
-  const history = useHistory();
-  const deckId = useParams().deckId;
-  // console.log(deckId); >> 1
+  //make an API request to get the current deck information using the link ID
   useEffect(() => {
-    const controller = new AbortController();
     async function readDeckInfo() {
       try {
         const data = await readDeck(deckId, controller.signal);
@@ -32,6 +34,8 @@ export default function StudyScreen() {
     };
   }, [deckId]);
   // console.log(deckInfo);
+
+  //assign the card in the updated deck based on the index of card
   const card = deckInfo.cards[cardIndex] || {};
 
   // console.log(card);
@@ -45,12 +49,12 @@ export default function StudyScreen() {
   //   setFlipped(!flipped);
   // };
 
-
+  //display the next card in the deck until it reaches the end
+  //giving an option to go back home or to restart the study page of the current deck
   const cardHandler = () => {
-    if (cardIndex+1 < deckInfo.cards.length) {
+    if (cardIndex + 1 < deckInfo.cards.length) {
       setCardIndex(cardIndex + 1);
       setFlipped(!flipped);
-
     } else {
       const staying = window.confirm(
         "Restart cards? \n \n Click 'cancel' to return to the home page?"
@@ -60,18 +64,17 @@ export default function StudyScreen() {
       } else history.push("/");
     }
   };
-  
+
   return (
     <React.Fragment>
       <StudyScreenNav deckInfo={deckInfo} />
       <h1>Study: {deckInfo.name}</h1>
       {/*conditional rendering for deck length*/}
-
       {deckInfo.cards.length > 2 ? (
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">
-              Card {cardIndex+1} of {deckInfo.cards.length}
+              Card {cardIndex + 1} of {deckInfo.cards.length}
             </h5>
             <p className="card-text">{flipped ? card.back : card.front}</p>
             <div

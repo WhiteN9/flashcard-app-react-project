@@ -11,23 +11,17 @@ import CreateCard from "./Deck-Cards/CreateCard";
 import EditCard from "./Deck-Cards/EditCard";
 
 export default function Deck() {
-  const [deckInfo, setDeckInfo] = useState({ cards: [] });
-  // still need cards:[] because on initial load,
-  // it will try to access cards to map
-
   const history = useHistory();
   const {
     params: { deckId },
     path,
   } = useRouteMatch();
-  //   console.log(routeMatch);
-  //   params: {
-  //     deckId: "1";
-  //   }
-  //   path: "/decks/:deckId";
-  //   url: "/decks/1";
 
-  //   console.log(deckInfo);
+  const [deckInfo, setDeckInfo] = useState({ cards: [] });
+  // still need cards:[] because on initial load,
+  // it will try to access cards to map
+
+  //make an API request to get individual deck information by ID
   useEffect(() => {
     const controller = new AbortController();
     async function readDeckInfo() {
@@ -45,11 +39,8 @@ export default function Deck() {
     };
   }, [deckId]);
 
+  //determining whether the clicked item is a card or a deck and proceed to delete it
   const handleDelete = async (item) => {
-    console.log(item.deckId);
-    console.log("deckId" in item); //true if card
-    console.log(item.hasOwnProperty("deckId")); //true if card
-    console.log(item.deckId !== undefined); //true if card
     if ("deckId" in item) {
       const result = window.confirm(
         "Delete this card? \n \n You will not be able to recover it"
@@ -69,6 +60,7 @@ export default function Deck() {
     }
   };
 
+  //create a list of items with a delete handler
   const cardList = deckInfo.cards.map((cardInfo) => (
     <CardItemLink
       key={cardInfo.id}

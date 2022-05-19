@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { DeckDisplayNav } from "./DeckDisplayNav";
 
+//display the deck navigation bar and an article element containing all the deck information
 export const DeckDisplay = ({ deckInfo, handleDelete, cardList }) => {
   return (
     <React.Fragment>

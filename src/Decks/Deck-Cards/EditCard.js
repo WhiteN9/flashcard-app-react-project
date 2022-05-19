@@ -27,7 +27,7 @@ const EditCard = () => {
       }
     }
     readDeckInfo();
-  }, []);
+  }, [deckId]);
   //on initial load the card using the current card ID, update if there is deck ID
   useEffect(() => {
     const controller = new AbortController();
@@ -40,7 +40,7 @@ const EditCard = () => {
       }
     }
     readCardInfo();
-  }, [deckInfo]);
+  }, [deckId, cardId]);
 
   return (
     <React.Fragment>

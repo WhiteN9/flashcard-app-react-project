@@ -12,13 +12,11 @@ export const EditCardForm = ({ cardInfo, setCardInfo, initialCardInfo }) => {
   const handleEditCard = async (evt) => {
     evt.preventDefault();
     const controller = new AbortController();
-    const data = await updateCard(cardInfo, controller.signal);
-    console.log(data);
-    setCardInfo({ ...initialCardInfo });
-    history.push(`/decks/${deckId}/cards/${cardId}`);
+    await updateCard(cardInfo, controller.signal);
+    history.push(`/decks/${deckId}`);
   };
   const onCancel = () => {
-    setCardInfo({ ...initialCardInfo });
+    setCardInfo(initialCardInfo);
     history.push(`/decks/${deckId}/cards/${cardId}`);
   };
 

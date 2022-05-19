@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 //with a link to go home or to the current deck of the cards
 export const CreateCardNav = ({ deckInfo }) => {
   const { deckId } = useParams();
-  console.log("create card nav render");
   return (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">

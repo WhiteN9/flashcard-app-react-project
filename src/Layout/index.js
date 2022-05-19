@@ -7,7 +7,6 @@ import Deck from "../Decks/Deck";
 import NotFound from "./NotFound";
 
 function Layout() {
-
   return (
     <React.Fragment>
       <Header />

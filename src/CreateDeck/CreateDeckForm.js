@@ -19,7 +19,6 @@ export const CreateDeckForm = () => {
   const handleCreateDeck = async (evt) => {
     evt.preventDefault();
     const data = await createDeck(deckInfo, controller.signal);
-    console.log(data);
     setDeckInfo({ ...initialDeckInfo });
     history.push(`/decks/${data.id}`);
   };

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 // return an article containing information of the deck
 // default is for in case we need to access deckInfo.cards.length but cards is empty
 export const HomeDecks = ({ deckInfo = { cards: [] }, handleDeckDelete }) => {
-  // console.log(id)
   return (
     <article className="card list-group-item list-group-item-action">
       <div className="card-body">

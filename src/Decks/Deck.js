@@ -18,8 +18,6 @@ export default function Deck() {
   } = useRouteMatch();
 
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
-  // still need cards:[] because on initial load,
-  // it will try to access cards to map
 
   //make an API request to get individual deck information by ID
   useEffect(() => {
@@ -34,7 +32,6 @@ export default function Deck() {
     }
     readDeckInfo();
     return () => {
-      console.log("unmounting deck");
       controller.abort();
     };
   }, [deckId]);

@@ -14,7 +14,7 @@ export const EditDeckForm = () => {
   };
   const [deckInfo, setDeckInfo] = useState({ ...initialDeckInfo });
 
-  //get the deck
+  //get the deck based on the url deck ID
   useEffect(() => {
     async function readDeckInfo() {
       try {
@@ -26,7 +26,6 @@ export const EditDeckForm = () => {
     }
     readDeckInfo();
     return () => {
-      console.log("unmounting edit deck form");
       controller.abort();
     };
   }, [deckId]);
@@ -34,7 +33,7 @@ export const EditDeckForm = () => {
   //upon submitting, make an api request to update the deck
   const handleEditDeck = async (evt) => {
     evt.preventDefault();
-    const data = await updateDeck(deckInfo, controller.signal);
+    await updateDeck(deckInfo, controller.signal);
     setDeckInfo({ ...initialDeckInfo });
     history.push(`/decks/${deckId}`);
   };

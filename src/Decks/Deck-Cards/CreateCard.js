@@ -9,6 +9,7 @@ const CreateCard = () => {
   const { deckId } = useParams();
 
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
+  
   //declare the deckInfo state and make an API request to update to the current deck by the url ID
   useEffect(() => {
     async function readDeckInfo() {
@@ -21,11 +22,9 @@ const CreateCard = () => {
     }
     readDeckInfo();
     return () => {
-      console.log("unmounting deck");
       controller.abort();
     };
   }, [deckId]);
-  console.log("create card render");
 
   return (
     <React.Fragment>

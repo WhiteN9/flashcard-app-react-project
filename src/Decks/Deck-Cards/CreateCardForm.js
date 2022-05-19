@@ -13,6 +13,7 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
     deckId: id,
   };
   const [cardInfo, setCardInfo] = useState(initialCardInfo);
+  
   //update the cardInfo upon receiving the deck id passed down from its parent component
   useEffect(() => {
     setCardInfo({ ...cardInfo, deckId: id });
@@ -30,7 +31,7 @@ export const CreateCardForm = ({ deckInfo: { id = 0 } }) => {
     setCardInfo(initialCardInfo);
     history.push(`/decks/${cardInfo.deckId}`);
   };
-  console.log("create card form render");
+
   return (
     <React.Fragment>
       <CardForm

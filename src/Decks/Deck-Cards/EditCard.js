@@ -15,6 +15,7 @@ const EditCard = () => {
     deckId: 0,
   };
   const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
+  
   //on initial load the deck using the current deck ID
   useEffect(() => {
     async function readDeckInfo() {

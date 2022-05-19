@@ -3,7 +3,6 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import { StudyScreenNav } from "./StudyScreenNav";
 
-//setting default values are very important to not break the page at initial load
 export default function StudyScreen() {
   const history = useHistory();
   const deckId = useParams().deckId;
@@ -11,11 +10,8 @@ export default function StudyScreen() {
 
   //declare state of the deck
   const [deckInfo, setDeckInfo] = useState({ cards: [] });
-  //default value with an object of `cards` property with an empty array value
-  //so that the `card` variable have something "defined" to read while waiting for the
-  //actual deckInfo.cards
   const [cardIndex, setCardIndex] = useState(0);
-  const [flipped, setFlipped] = useState(false); //flipped - flip
+  const [flipped, setFlipped] = useState(false);
 
   //make an API request to get the current deck information using the link ID
   useEffect(() => {
@@ -29,25 +25,12 @@ export default function StudyScreen() {
     }
     readDeckInfo();
     return () => {
-      console.log("unmounting study screen");
       controller.abort();
     };
   }, [deckId]);
-  // console.log(deckInfo);
 
   //assign the card in the updated deck based on the index of card
   const card = deckInfo.cards[cardIndex] || {};
-
-  // console.log(card);
-  //Flip:
-  //Flipped = false
-  //Click
-  //Flipped = true
-  //in card-text class: {card?.front} also works for 1 condition, known as Optional chaining
-
-  // const handleFlip = () => {
-  //   setFlipped(!flipped);
-  // };
 
   //display the next card in the deck until it reaches the end
   //giving an option to go back home or to restart the study page of the current deck

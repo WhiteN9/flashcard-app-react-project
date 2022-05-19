@@ -14,9 +14,6 @@ export default function Home() {
     async function getDeckList() {
       try {
         const listDeckData = await listDecks(controller.signal);
-        // console.log(response);
-        // const listDeckData = await response.json(); no need because this is from local and it is not inside json
-        // console.log(listDeckData);
         setDeckList(listDeckData);
       } catch (error) {
         console.log(error);

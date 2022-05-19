@@ -15,11 +15,11 @@ const EditCard = () => {
     deckId: 0,
   };
   const [cardInfo, setCardInfo] = useState({ ...initialCardInfo });
-
+  //on initial load the deck using the current deck ID
   useEffect(() => {
     async function readDeckInfo() {
       try {
-        const data = await readDeck(deckId, controller.sginal);
+        const data = await readDeck(deckId, controller.signal);
         setDeckInfo(data);
       } catch (error) {
         console.log(error);
@@ -27,11 +27,11 @@ const EditCard = () => {
     }
     readDeckInfo();
   }, []);
-
+  //on initial load the card using the current card ID, update if there is deck ID
   useEffect(() => {
     async function readCardInfo() {
       try {
-        const data = await readCard(cardId, controller.sginal);
+        const data = await readCard(cardId, controller.signal);
         setCardInfo(data);
       } catch (error) {
         console.log(error);

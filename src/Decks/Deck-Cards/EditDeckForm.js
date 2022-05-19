@@ -14,6 +14,7 @@ export const EditDeckForm = () => {
   };
   const [deckInfo, setDeckInfo] = useState({ ...initialDeckInfo });
 
+  //get the deck
   useEffect(() => {
     async function readDeckInfo() {
       try {
@@ -30,14 +31,14 @@ export const EditDeckForm = () => {
     };
   }, [deckId]);
 
+  //upon submitting, make an api request to update the deck
   const handleEditDeck = async (evt) => {
     evt.preventDefault();
     const data = await updateDeck(deckInfo, controller.signal);
-    console.log(data);
     setDeckInfo({ ...initialDeckInfo });
     history.push(`/decks/${deckId}`);
   };
-
+  //or cancel and go back to the deck page with no changes
   const onCancel = () => {
     setDeckInfo({ ...initialDeckInfo });
     history.push(`/decks/${deckId}`);

@@ -7,7 +7,6 @@ export default function Home() {
   const history = useHistory();
   const controller = new AbortController();
 
-
   const [deckList, setDeckList] = useState([]);
   //make an api request to get a list of the decks
   useEffect(() => {

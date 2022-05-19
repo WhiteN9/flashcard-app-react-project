@@ -15,7 +15,7 @@ export const CreateDeckForm = () => {
   const [deckInfo, setDeckInfo] = useState({ ...initialDeckInfo });
 
   //the deck form is capable of submitting a new deck and go to the new deck's page
-  // or cancelling and go back to the home page
+  //or cancelling and go back to the home page
   const handleCreateDeck = async (evt) => {
     evt.preventDefault();
     const data = await createDeck(deckInfo, controller.signal);

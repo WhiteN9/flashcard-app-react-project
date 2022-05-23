@@ -14,4 +14,4 @@ The Create Card and Edit Card screens share the same form component.
 The useEffect() hooks have the appropriate dependencies listed in the dependency array.
 State is "lifted up" to the parent component where appropriate.
 
-
+#To-Do: connect with a database server to be interactive and save flashcard
